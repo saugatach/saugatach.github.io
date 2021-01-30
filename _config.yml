@@ -1,6 +1,6 @@
-#remote_theme: saugatach/reverie
+remote_theme: saugatach/friday-theme/
 title: Welcome to webpage of Saugata Chatterjee!
 description: Data analysis, machine learning, and physics meet here
 # baseurl: '/reverie/'
 
-theme: jekyll-theme-minimal
+#theme: jekyll-theme-minimal
