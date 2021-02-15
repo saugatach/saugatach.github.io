@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Normal Distribution - Bytes of wisdom
+    
+  </title>
+
+  <meta name="description" content="We share tutorials, ideas, and recipes on this blog on physics, linux, and data analysis">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="/tutorials/tutorials-lectures-normal-distribution.html">
+  <link rel="alternate" type="application/rss+xml" title="Bytes of wisdom" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Bytes of wisdom</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/research">Research</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tutorials">Tutorials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+
+<!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/bg-tutorial-black-blur.jpg')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Normal Distribution</h1>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <h1 id="introduction">Introduction</h1>
+<p>The Normal Distribution is a continuous probability distribution of a random variable. 
+Anything that we measure with an in-built degree of randomness follows a probability distribution. 
+That means certain values of the measurements of that variable are either more likely or less likely than others. 
+For example, if we decide to measure our own systolic blood pressure, we will find that it does not stay 
+constant at 120 (mm of Hg) as we might think. In fact, our blood pressure will fluctuate throughout the 
+day based on the diurnal rhythms of the body and the stressors that affect us. In fact, the standard deviation 
+of the systolic blood pressure is around 11. So it is completely natural to have a blood pressure of 130 
+while we are busy at work and then see it drop to 110 after a relaxing bath. However, on average it will 
+hover around 120. If we record this variation and tabulate it, we will see a pattern. There would be a 
+clustering of values around 120 with scattered values around it. As we keep repeating the process, a 
+pattern will emerge. We demonstrate that with an example in the following section.</p>
+
+<h2 id="from-discrete-to-continuous">From discrete to continuous</h2>
+<p>Let us start by performing a hypothetical experiment where we sample our own blood pressure at regular intervals 
+several times during the waking hours of the day. Let us say we performed 10 measurements. The data might look 
+something like this,</p>
+
+<p><img src="/img/posts/4d079a75-21d9-4bdc-b4f1-460d690e7be5.png" alt="drawing" /></p>
+
+<p>If we sampled few more times
+<img src="/img/posts/d8113e63-004a-47bb-8e66-b487e0dcc6a4.png" alt="drawing" /></p>
+
+<p>When we increase our sample size to a 1000 data points it starts to look like a bell shaped distribution.
+<img src="/img/posts/cd2082bd-e77e-44d8-87f3-20fe0e768f03.png" alt="drawing" /></p>
+
+<p>And finally, when we have large quantity of data, the distribution becomes almost continuous.
+<img src="/img/posts/28d5f3db-133f-4b70-aa73-ec49e31027c8.png" alt="drawing" /></p>
+
+<pre><code class="language-commandline"># above plots can be generated using
+&gt; bp = round(rnorm(10, mean = 120, sd = 10))
+&gt; hist(bp, breaks = 5, main="n = 10", col="lightblue")
+&gt; bp = round(rnorm(50, mean = 120, sd = 10))
+&gt; hist(bp, main="n=50", col="lightblue")
+&gt; bp = round(rnorm(1000, mean = 120, sd = 10))
+&gt; hist(bp, main="n = 1000", col="lightblue")
+&gt; bp = round(rnorm(100000, mean = 120, sd = 10))
+&gt; hist(bp, breaks=1000, main="n = 100000", col="lightblue")
+</code></pre>
+
+<p>This bell shaped graph is the Normal Distribution. It is completely specified by only two point estimates of a 
+distribution, mean (\(\mu\) read mu) and variance (\(\sigma^2\) read sigma squared) or equivalently the standard deviation, 
+and is written as: \(N(\mu, \sigma^2)\).</p>
+
+<p>Most data can be modelled using the Normal Distributions but not all. It is the job of the statistician to verify
+which distribution fits the data best. For example, blood pressure data will follow a normal distribution, but the 
+time interval between arrival of trains at a train station will follow a Poisson distribution. Here, we will only look at simple 
+applications of normal distributions and postpone the discussion of model selection for another lecture.</p>
+
+<h3 id="probability-density-function-for-normal-distribution">Probability density function for normal distribution</h3>
+
+<p>Normal distribution is uniquely parametrized by the mean and variance. A noemal distribution \(N(\mu, \sigma^2)\) has the
+probability density function (PDF)
+\(P(x) = \frac{1}{\sigma \sqrt(2\pi)} exp^{-\frac{1}{2} \left( \frac{x - \mu}{\sigma} \right)^2 }\)
+Since this is a continuous distribution, the PDF itself has no meaning, only the cumulative distribution function (CDF).
+We are only interested in the CDF for these lectures.</p>
+
+<h3 id="z-score">z-score</h3>
+
+<p>z-score of a random event is a measure of how many standard deviations away from the mean is that random event. 
+For example, when someone says that we are witnessing a 6-sigma event, they are saying that we are witnessing
+a very rare event. Or in other words, that event is so far removed from the average value that the probability 
+of occurrence of that event is almost zero. We can turn this argument around, and claim that if an event occurred due 
+to some intervention and that event is otherwise an improbable event (3-sigma or higher), then the intervention is
+efficacious. This is utilized in hypothesis testing and finds widespread use among measuring the statistical robustness 
+of well-designed experiments. We will discuss this in the lecture Hypothesis Testing.</p>
+
+<p>Let’s start with an example. <br />
+<strong>Example 1:</strong> The average price of 2-bedroom houses in a small town is \$175,000 with a standard deviation
+of about $7,000. What is the probability of finding a house for \$165,000 or less (assuming all other parameters like sqft 
+being identical).</p>
+
+<p><strong>Solution:</strong> Mean(\(\mu\)) = 175000, SD(\(\sigma\)) = 7000<br />
+We find something known as the z-score.
+The formula for the z-score is <br />
+z = \(\frac{X - \mu }{\sigma}\) = (X- mean)/SD<br />
+We plug in the values above to get the following z-score,<br />
+\(z = \frac{165000-175000}{7000} = -1.42\) <br />
+We can then look the corresponding cumulative probability value for the normal distribution table using the R-function.</p>
+<pre><code class="language-commandline">&gt; z = (165000-175000)/7000
+&gt; z
+[1] -1.428571
+&gt; pnorm(z)
+[1] 0.07656373
+</code></pre>
+<p>Therefore, the probability of finding a house listed for $160,000 is 1.6%.</p>
+
+<p>What the z-score does, is that it converts the normal distribution \(N(\mu, \sigma^2)\) to a standard normal distribution
+\(N(0, 1)\). Therefore, the X-values in the normal distribution are mapped to the z-scores in the standard normal distribution.
+The advantage is that, we no longer need to painstakingly find the CDF of \(N(\mu, \sigma^2)\). Instead, we just use 
+the CDF for standard normal distribution, which is already calculated to great precision.</p>
+
+<p>Let’s look at few examples on how to calculate the z-scores.
+<strong>Example 2:</strong>: If mean = 120, sd = 15, find the z-scores for 
+a. X = 135<br />
+b. X = 112<br />
+c. X = 101</p>
+
+<p><strong>Solution:</strong>
+For all these problems the mean, and the standard deviation are same: Mean(\(\mu\)) = 120, SD(\(\sigma\)) = 15.<br />
+a. X = 135: z = (135-120)/15 = 1<br />
+b. X = 112: z = (112-120)/15 = -0.53<br />
+c. X = 101: z = (101-120)/15 = -1.27 (rounded from -1.266)<br />
+z-scores are usually rounded to 2 decimal places.</p>
+
+<h2 id="finding-the-probability-using-z-score">Finding the probability using z-score</h2>
+
+<p>To find the probability of a random event sampled from a normal distribution, we first find the z-score, and then 
+use that z-score to find the distribution function. Three different scenarios can arise.</p>
+<ol>
+  <li>We want to find the probability of having a value less than a certain X-value.</li>
+  <li>We want to find the probability of having a value greater than a certain X-value.</li>
+  <li>We want to find the probability of having a value between two X-values.</li>
+</ol>
+
+<p><strong>Scenario 1: Find the probability of having a value less than a certain X-value</strong><br />
+We have already encountered a problem in this scenario in Example 1 above, where we wanted the probability of a listing
+less than \$165,000, which is equivalent of asking the area under the PDF to the left of the z-score -1.42.</p>
+<pre><code class="language-commandline">&gt; curve(dnorm(x,0,1),xlim=c(-3,3),main='Standard Normal') 
+&gt; cord.x = c(-3,seq(-3,-1.42,0.01),-1.42) 
+&gt; cord.y = c(0, dnorm(seq(-3,-1.42,0.01)), 0)
+&gt; polygon(cord.x,cord.y,col='skyblue')
+&gt; text(-1.42, 0,'-1.42', col='red')
+</code></pre>
+<p><img src="/img/posts/4febba25-ed69-4c03-b1de-aa39201d4b0a.png" alt="drawing" /></p>
+
+<p><strong>Scenario 2: Find the probability of having a value greater than a certain X-value</strong>  <br />
+<strong>Example 3:</strong>: The average price of 2-bedroom houses in a small town is \$175,000 with a standard deviation
+of about $7,000. What is the probability of finding a house for \$165,000 or more (assuming all other parameters like sqft 
+being identical).</p>
+
+<p>This problem is identical to Example 1 except now we want to see how many houses are selling for more than \$165,000 
+(rather than less than that value). Everything proceeds identically, until the last step where the probability value
+has to be subtracted from 1.</p>
+
+<p><strong>Solution:</strong> Mean(\(\mu\)) = 175000, SD(\(\sigma\)) = 7000<br />
+We plug in the values above to get the following z-score,<br />
+\(z = \frac{X - \mu }{\sigma} = \frac{165000-175000}{7000} = -1.42\)</p>
+<pre><code class="language-commandline">&gt; z = (165000-175000)/7000
+&gt; z
+[1] -1.428571
+&gt; 1-pnorm(z)
+[1] 0.9234363
+</code></pre>
+<p>This shows that the probability of finding a house listed for more than \$165,000 is 92.34%. In essence of the 
+pictorial representation, we are essentially finding the area to the right of the graph.<br />
+<img src="/img/posts/906567eb-0292-4d59-9bf3-f153d05b18c2.png" alt="drawing" /></p>
+
+<p><strong>Scenario 3: Find the probability of having a value between two X-values</strong>  <br />
+<strong>Example 4:</strong>: The average price of 2-bedroom houses in a small town is \$175,000 with a standard deviation
+of about $7,000. What is the probability of finding houses listed between \$169,000 and \$179,000 (assuming 
+all other parameters like sqft being identical).
+<strong>Solution:</strong> Mean(\(\mu\)) = 175000, SD(\(\sigma\)) = 7000<br />
+This problem has 2 different z-scores for the 2 different X-values:
+\(X_1 = 16900, X_2 = 179000\).<br />
+\(X_1 = 169000:  z = \frac{X - \mu }{\sigma} = \frac{169000-175000}{7000} = -0.86\)
+\(X_2 = 179000:  z = \frac{X - \mu }{\sigma} = \frac{179000-175000}{7000} = 0.57\)</p>
+<pre><code class="language-commandline">&gt; z1 = (169000-175000)/7000
+&gt; z1
+[1] -0.8571429
+&gt; z2 = (179000-175000)/7000
+&gt; z2
+[1] 0.5714286
+&gt; pnorm(z1)
+[1] 0.195683
+&gt; pnorm(z2)
+[1] 0.7161454
+&gt; 0.7161454-0.5204624
+[1] 0.195683
+&gt; pnorm(z2)-pnorm(z1)
+[1] 0.5204624
+</code></pre>
+<p>We have 2 different z-scores; -0.86 and 0.57. We find the corresponding probability density functions for these z-scores,
+and then we subtract the smaller probability from the larger one (as probabilities have to be greater than 0). 
+The resulting value is the probability of having a listing between \$169,000 and \$179,000 
+(or a z-score between -0.86 and 0.57).
+<img src="/img/posts/a0d1337c-3571-4eb5-8695-045fd8b4f33c.png" alt="drawing" />
+There is a 52% chance that a 2-bedroom house will be listed for a price between \$169,000 and \$179,000.</p>
+
+<p>References: <a href="https://www.r-bloggers.com/2005/05/creating-shaded-areas-in-r/">Creating shaded areas in R</a></p>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:saugata.ch@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://twitter.com/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/in/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Saugata chatterjee 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Tutorials - Bytes of wisdom
+    
+  </title>
+
+  <meta name="description" content="We share tutorials, ideas, and recipes on this blog on physics, linux, and data analysis">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="/tutorials.html">
+  <link rel="alternate" type="application/rss+xml" title="Bytes of wisdom" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Bytes of wisdom</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/research">Research</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tutorials">Tutorials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+
+<!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/bg-tutorial-black-blur.jpg')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Tutorials</h1>
+            
+            <span class="subheading">Lectures and tutorials on statistics, machine learning, physics, computational physics</span>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <h1 id="statistics">Statistics</h1>
+
+<p>List of lectures on main topics in Statistics. These are at 100 level and do not use the 
+concepts of \(\sigma\)-spaces.</p>
+
+<ol>
+  <li><a href="/tutorials/tutorials-lectures-binomial-distribution.html">Binomial Distribution</a></li>
+  <li><a href="/tutorials/tutorials-lectures-normal-distribution.html">Normal Distribution</a></li>
+</ol>
+
+<h2 id="r-labs">R Labs</h2>
+
+<ol>
+  <li><a href="/tutorials/tutorials-intro-r.html">Quick Introduction to R</a></li>
+</ol>
+
+<h1 id="physics">Physics</h1>
+<h2 id="sagemath">Sagemath</h2>
+
+<p>Sagemath simplifies general relativistic calculation and can replace Maple completely. Sagemath is 
+built on a solid mathematical framework and all functions follow a robust geometrical hierarchy.
+It is easy to define metric spaces and calculate the Riemann tensor and other geometric quantities 
+in curved space. The main strength of this package is in visualizing embedding 
+spaces.
+For example, a graphical representation of the Bondi coordinates shows that it is only a tiny patch
+on the deSitter hyperboloid in a higher dimensional embedding space. It does not cover the entire 
+spacetime. We explore this in #4 below.</p>
+
+<p>The following are Sagemath tutorials which are rendered live by GitHub nbviewer.</p>
+
+<ol>
+  <li><a href="https://nbviewer.jupyter.org/github/saugatach/sagemanifold/blob/master/Sagemath%20tutorial%20-%20substitution.ipynb">Substitution in Sagemath is tricky</a></li>
+  <li><a href="https://nbviewer.jupyter.org/github/saugatach/sagemanifold/blob/master/Embedding.ipynb">Embedding of torus and \(dS^2\) in \(R^3\)</a></li>
+  <li><a href="https://nbviewer.jupyter.org/github/saugatach/sagemanifold/blob/master/FRWmetrictest.ipynb">FRW metric</a></li>
+  <li><a href="https://nbviewer.jupyter.org/github/saugatach/sagemanifold/blob/master/BirrelDavies-chap5.ipynb">Bondi coordinates cover only a part of deSitter – embedding diagram</a></li>
+</ol>
+
+<p>The files can be directly accessed from my <a href="http://github.com/saugatach/sagemanifold">GitHub page</a>.</p>
+
+<p>If we want to download and run these files locally then we will need to install Sagemath.
+Each notebook is written in the language of SageManifold and requires Sage to run.
+You can install Sagemath from <a href="https://doc.sagemath.org/html/en/installation/">here</a>. 
+On Ubuntu use</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install </span>sagemath
+</code></pre></div></div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:saugata.ch@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://twitter.com/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/in/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Saugata chatterjee 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+</body>
+
+</html>

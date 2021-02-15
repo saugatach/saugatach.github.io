@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Binomial Distribution - Bytes of wisdom
+    
+  </title>
+
+  <meta name="description" content="We share tutorials, ideas, and recipes on this blog on physics, linux, and data analysis">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="/tutorials/tutorials-lectures-binomial-distribution.html">
+  <link rel="alternate" type="application/rss+xml" title="Bytes of wisdom" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Bytes of wisdom</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/research">Research</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tutorials">Tutorials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+
+<!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/bg-tutorial-black-blur.jpg')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Binomial Distribution</h1>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <h1 id="introduction">Introduction</h1>
+<p>Let’s start with a question.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If the covid vaccine has 95% efficacy, then if we sample 100 people, 
+what is the probability that 95 of them develop immunity?
+</code></pre></div></div>
+
+<p>The answer.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>18%
+</code></pre></div></div>
+
+<p>But why 18% and not 95%. This is due to the sampling process. All possible combinations of
+<code class="language-plaintext highlighter-rouge">(# of immune, # of non-immune)</code> under the constraint that <code class="language-plaintext highlighter-rouge"># of immune + # of non-immune = 100</code>
+are allowed to occur with a finite probability. Not all those probabilities are equal. Some are 
+more probable and some are less probable. Plotting the probabilities produces the following graph.</p>
+
+<p><img src="/img/posts/binomial1.png" alt="drawing" /></p>
+
+<p>From the plot we see that the probability peaks around 95 and then trails off in either direction. 
+So, although the values sharply peak at 95, the probability of getting 94 immune individuals (out 
+of 100) is similar to that of getting 95 or 96. In fact, a series of values which are not 95 have 
+finite probabilities. The probabilities are distributed over a range of probable values in the form 
+of a bell-shaped structure that we see in the graph. This is known as a distribution, and in this case,
+it is called a <strong>binomial distribution</strong>.</p>
+
+<h1 id="binomial-distribution">Binomial Distribution</h1>
+
+<p>When we have a binary-valued system i.e. there are only two outcomes, then a collection of events 
+which are subsets of the system, forms a <strong>binomial distribution</strong>. Consider tossing a 
+coin. There are only two outcomes; heads or tails. {H,T}. Now, if we toss the coin 3 times, then
+we can get a series of head and tails. The number of heads and tails that we will get at any time
+would be totally random and determined by the probability of heads from that coin. Let’s say we get
+{HTH}. This sequence is itself random. However, get calculate its probability.</p>
+
+<p>Let us assume the coin is fair and the probability of landing on heads and tails in equal. 
+Let<br />
+p = P(H) = probability of landing on heads, and<br />
+q = P(T) = probability of landing on tails.</p>
+
+<p>The probability of getting HTH is \(P(H) \times P(T) \times P(H) = p \times q \times p = p^2q\). 
+Now, these are 3 possible ways of getting 2H and 1T since there are three unique possibilities 
+only {HHT, HTH, THH}. Therefore, the probability of getting 2H and 1T is<br />
+\(P(2H,1T) = 3p^2q\)</p>
+
+<p>We can avoid explicit counting of elements, and directly calculate the number of possible events 
+with 2H and 1T as \({}^3C_2\) since we are choosing 2 heads out of possible 3 outcomes and there 
+are only  \({}^3C_2\) (read 3 choose 2) ways of doing it.  <br />
+\(P(2H,1T) = {}^3C_2p^2q\)</p>
+
+<p>If we have N tosses, and a series of r Heads, then there must be (N-r) tails.<br />
+The probability for {HHHH…(r-times)T….((N-r)-times)} is 
+\(p \times p \times \cdots (r-times) \times q \times  q \times  \cdots ((N-r)-times) = p^r q^{N-r}\).</p>
+
+<p>The combined probability for r heads and N-r tails is<br />
+\(P(rH,(N-r)T) = {}^NC_r p^r q^{N-r}\)<br />
+as there are \({}^NC_r\) (read N choose r) ways of choosing r heads out of N tosses. 
+This formula is universally applicable to all binomial distributions. Since \(p+q=1\) we can 
+rewrite this as<br />
+\(P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}\)</p>
+
+<h3 id="example-1">Example 1</h3>
+<p>An unfair coin has a probability of landing on heads 60% of the time. If the same coin is tossed 
+5 times, what is the probability of getting</p>
+<ol>
+  <li>all heads</li>
+  <li>2 heads</li>
+  <li>1 heads</li>
+</ol>
+
+<p><strong>Solution:</strong><br />
+1. <strong>all heads</strong><br />
+Getting all heads when the coin is tossed 5 times means we have 5 heads and 0 tails.<br />
+P(H) = p = 60% = 0.6 <br />
+Since probability of getting tails = P(T) = q = 1 - p (see above)<br />
+P(T) = q = 1-0.6 = 0.4<br />
+Plugging in the values {N = 5, r = 5, p = 0.6, q = 0.4} in the formula 
+\(P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}\)<br />
+\(P(5H,0T) = {}^5C_5 \times (0.6)^5 \times (0.4)^0 = 1 \times 0.07776 \times 1 = 0.07776\)<br />
+Note: Anything raised to the power of zero is 1. This implies \((0.4)^0 = 1\). 
+Note: \({}^NC_N = 1\). This implies \({}^5C_5 = 1\). 
+We convert this to a percentage and round to 2 decimal places and have the final answer<br />
+   \(P(5H,0T) = 7.78\%\)</p>
+
+<p><strong>Table method</strong>
+Here we show you how to use the table method to calculate the probability of an event belonging 
+to a binomial distribution. Create a table as follows.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Probability(p)</th>
+      <th># of events(r)</th>
+      <th>p^r</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Success</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Failure</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Let us arbitrarily label heads as success. We can label tails as success too, and the analysis 
+will remain the same. Here, under the probability column we will write down the individual 
+probabilities of success and failure. In this example, success=heads, so we will write down 0.6 
+under the probability column in the row for <strong>Success</strong>, and we will write 0.4 under the 
+probability column in the row for <strong>Failure</strong>. <strong>Remember:</strong> We always convert probabilities in 
+percentages to decimals before using them in the formula for the binomial distribution.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Probability(p)</th>
+      <th># of events(r)</th>
+      <th>\(p^r\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Success</td>
+      <td>0.6</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Failure</td>
+      <td>0.4</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td>1</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The total for the first column should always add up to a 1 (100%).
+Next, we fill the column # of events(r) with the number of success and number of failures. We 
+have 5 heads so there are 5 successes, and there are no tails, so that means there are 0 failures.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Probability(p)</th>
+      <th># of events(r)</th>
+      <th>\(p^r\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Success</td>
+      <td>0.6</td>
+      <td>5</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Failure</td>
+      <td>0.4</td>
+      <td>0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td>1</td>
+      <td>5</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The total for the second column should always add up to the toal number of events (5 coin tosses). 
+Now, for the third column we exponentiate the values in column 1 with the values in column 2.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Probability(p)</th>
+      <th># of events(r)</th>
+      <th>\(p^r\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Success</td>
+      <td>0.6</td>
+      <td>5</td>
+      <td>\((0.6)^5\)</td>
+    </tr>
+    <tr>
+      <td>Failure</td>
+      <td>0.4</td>
+      <td>0</td>
+      <td>\((0.4)^0\)</td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td>1</td>
+      <td>5</td>
+      <td>\({}^5C_5\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We did not do a total in the last row of the last column. Instead, we found the pre-factor \({}^NC_r\).
+If this is confusing you can ignore the last row.</p>
+
+<p>Now, multiply everything in the last column, and you will have your answer.<br />
+\(P(5H,0T) = {}^5C_5 \times (0.6)^5 \times (0.4)^0 = 1 \times 0.07776 \times 1 = 0.07776 = 7.78\%\)</p>
+
+<p>Although, this process might seem contrived and a roundabout way of calculating obvious quantities, I have noticed through 
+experience that students perform better with the table method when presented with a complex in 
+binomial distribution (see Example 2 below). Students frequently match the number of successes 
+with probability of failures. The table method provides a visual aid to prevent this mistake.</p>
+
+<p>2. <strong>2 heads</strong><br />
+Plugging in the values {N = 5, r = 2, p = 0.6, q = 0.4} in the formula 
+\(P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}\)<br />
+\(P(2H,3T) = {}^5C_2 \times (0.6)^2 \times (0.4)^{5-2} = 10 \times (0.6)^2 \times (0.4)^3 = 0.2304 = 23.04\%\)</p>
+
+<p><strong>Table method</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Probability(p)</th>
+      <th># of events(r)</th>
+      <th>\(p^r\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Success</td>
+      <td>0.6</td>
+      <td>2</td>
+      <td>\((0.6)^2\)</td>
+    </tr>
+    <tr>
+      <td>Failure</td>
+      <td>0.4</td>
+      <td>3</td>
+      <td>\((0.4)^3\)</td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td>1</td>
+      <td>5</td>
+      <td>\({}^5C_2\)</td>
+    </tr>
+  </tbody>
+</table>
+
+\[P(2H,3T) = {}^5C_2 \times (0.6)^2 \times (0.4)^{5-2} = 10 \times (0.6)^2 \times (0.4)^3 = 0.2304 = 23.04\%\]
+
+<p>3. <strong>1 heads</strong><br />
+Plugging in the values {N = 5, r = 1, p = 0.6, q = 0.4} in the formula 
+\(P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}\)<br />
+\(P(1H,4T) = {}^5C_1 \times (0.6)^1 \times (0.4)^{5-1} = 5 \times (0.6) \times (0.4)^4 = 0.0768 = 7.68\%\)</p>
+
+<p><strong>Table method</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Probability(p)</th>
+      <th># of events(r)</th>
+      <th>\(p^r\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Success</td>
+      <td>0.6</td>
+      <td>1</td>
+      <td>\((0.6)^1\)</td>
+    </tr>
+    <tr>
+      <td>Failure</td>
+      <td>0.4</td>
+      <td>4</td>
+      <td>\((0.4)^4\)</td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td>1</td>
+      <td>5</td>
+      <td>\({}^5C_1\)</td>
+    </tr>
+  </tbody>
+</table>
+
+\[P(1H,4T) = {}^5C_1 \times (0.6)^1 \times (0.4)^{5-1} = 5 \times (0.6) \times (0.4)^4 = 0.0768 = 7.68\%\]
+
+<h3 id="example-2">Example 2</h3>
+<p>If the covid vaccine has 95% efficacy, then if we sample 100 people, 
+what is the probability that 95 of them develop immunity?</p>
+
+<p><strong>Solution:</strong><br />
+In this problem there are only two outcomes - developing immunity after the vaccine, and not 
+developing immunity after the vaccine. Therefore, the outcomes follow the binomial distribution. 
+Let us label developing immunity as success and not developing immunity as failure.</p>
+
+<p>Then<br />
+probability of success = p = 0.95 (probability of developing immunity is 95%).<br />
+probability of failure = q = 1 - 0.95 = 0.05  (since p+q=1).</p>
+
+<p>We are assuming 95 out of the 100 people in the sample of 100 develop immunity. Therefore, <br />
+Number of success = 95<br />
+Number of failure = 5</p>
+
+<p><strong>Table method</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Probability(p)</th>
+      <th># of events(r)</th>
+      <th>\(p^r\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Success</td>
+      <td>0.95</td>
+      <td>95</td>
+      <td>\((0.95)^{95}\)</td>
+    </tr>
+    <tr>
+      <td>Failure</td>
+      <td>0.05</td>
+      <td>5</td>
+      <td>\((0.05)^5\)</td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td>1</td>
+      <td>5</td>
+      <td>\({}^{100}C_{95}\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>P(95 immune, 5 not immune) = \({}^{100}C_{95} \times (0.95)^{95} \times (0.05)^5 = 0.18 = 18\%\)</p>
+
+<h2 id="r-lab">R Lab</h2>
+
+<p>Now, we will learn howto find the probabilities of a binomial distribution using the R package. 
+Specifically, we will lean three things</p>
+<ol>
+  <li>How to calculate probability of a single event using R</li>
+  <li>How to calculate the entire binomial distribution using R</li>
+  <li>How to plot your binomial distribution</li>
+</ol>
+
+<p>At the end of this section you should be able to generate the plot at the beginning of this tutorial.</p>
+
+<p>If you are unfamiliar with the R package then read this first: <a href="tutorials-intro-r.html">Quick Introduction to R</a>.</p>
+
+<h4 id="combinations-in-r">Combinations in R</h4>
+
+<p>Combinations are computed in R using the function <code class="language-plaintext highlighter-rouge">choose()</code>.</p>
+<pre><code class="language-commandline">&gt; choose(5,2)
+[1] 10
+&gt; choose(5,3)
+[1] 10
+</code></pre>
+
+<h4 id="calculating-probability-of-a-single-event-from-a-binomial-distribution">Calculating probability of a single event from a binomial distribution</h4>
+<p><strong>Example 1.3</strong>
+Calculating the probability of P(2H,3T) from Example 1.3 above 
+\(P(2H,3T) = {}^5C_2 \times (0.6)^2 \times (0.4)^{5-2} = 10 \times (0.6)^2 \times (0.4)^3 = 0.2304 = 23.04\%\)
+using R we get</p>
+<pre><code class="language-commandline">&gt; choose(5,2)*(0.6)^2*(0.4)^3
+[1] 0.2304
+</code></pre>
+
+<p><strong>Example 2</strong>
+Calculating the probability of P(95 immune, 5 not immune) from Example 2 above
+P(95 immune, 5 not immune) = \({}^{100}C_{95} \times (0.95)^{95} \times (0.05)^5 = 0.18 = 18\%\)<br />
+using R we get</p>
+<pre><code class="language-commandline">&gt; choose(100,95)*(0.95)^95*(0.05)^5
+[1] 0.1800178
+</code></pre>
+
+<h4 id="calculating-probabilities-of-multiple-events-from-a-binomial-distribution">Calculating probabilities of multiple events from a binomial distribution</h4>
+
+<p><strong>Example 1</strong>
+Here we calculate the probabilities of all possible outcomes of tossing an unfair coin 5 times.</p>
+<pre><code class="language-commandline">&gt; n=c(0:5)
+&gt; n
+[1] 0 1 2 3 4 5
+&gt; choose(5,n)*(0.6)^n*(0.4)^(5-n)
+[1] 0.01024 0.07680 0.23040 0.34560 0.25920 0.07776
+</code></pre>
+<p>We first define a sequence of all possible outcomes for heads (or tails) and save the sequence as a vector,<br />
+<code class="language-plaintext highlighter-rouge">n=c(0:5)</code>. Then, we define the binomial probability distribution function (PDF) on this vector. The function 
+iterates over each value and calculates the corresponding probability and stores in another vector.</p>
+
+<p><strong>Example 2</strong>
+The vector of all possible outcomes out of the sample of 100 are all integers from 0 to 100. The binomial PDF
+is defined on these values.</p>
+<pre><code class="language-commandline">&gt; n=seq(0:100)
+&gt; y=choose(100,n)*(0.95)^n*(0.05)^(100-n)*100
+</code></pre>
+<p>We can plot the probability distribution function as a continuous plot</p>
+<pre><code class="language-commandline">&gt; plot(y, type ='l')
+</code></pre>
+<p><img src="/img/posts/c926a91e-6ad2-458c-ab13-2bc856d5fabb.png" alt="drawing" />
+However, since this is a discrete distribution we should plot it as a barplot</p>
+<pre><code class="language-commandline">&gt; n=c(0:100)
+&gt; p = choose(100,n)*(0.95)^n*(0.05)^(100-n)*100
+&gt; barplot(p, xlab = "# of immune individuals out of 100", ylim=c(0,20), col = "lightblue", names.arg = c(0:100))
+</code></pre>
+<p><img src="/img/posts/binomial1.png" alt="drawing" />
+The argument <code class="language-plaintext highlighter-rouge">ylim=c(0,20)</code> restricts the y-values between 0 and 20 since we do not have any probability values
+beyond 20%. <code class="language-plaintext highlighter-rouge">names.arg = c(0:100)</code> sets the x labels.</p>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:saugata.ch@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://twitter.com/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/in/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Saugata chatterjee 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+</body>
+
+</html>

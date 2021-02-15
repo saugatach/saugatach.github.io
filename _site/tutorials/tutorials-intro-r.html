@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Quick Introduction to R - Bytes of wisdom
+    
+  </title>
+
+  <meta name="description" content="We share tutorials, ideas, and recipes on this blog on physics, linux, and data analysis">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="/tutorials/tutorials-intro-r.html">
+  <link rel="alternate" type="application/rss+xml" title="Bytes of wisdom" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Bytes of wisdom</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/research">Research</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tutorials">Tutorials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+
+<!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/bg-tutorial-black-blur.jpg')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Quick Introduction to R</h1>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <h1 id="introduction">Introduction</h1>
+<p>R is a statistical programming language. It has several statistical libraries which facilities 
+fast statistical computations. Python has similar packages (scipy/stats), however, 
+it requires more coding to get the same results in python. Due to the speed of execution, production 
+level code uses Python. For daily research needs R is superior. R is more streamlined and 
+comes with built-in packages to be used a statistical analysis software. We can use R in 
+different ways. We can install it on our computer and use the IDE called R Studio, or we can use 
+cloud computing resources.</p>
+
+<h3 id="installation">Installation</h3>
+<p>To install R Studio on your computer go to the <a href="https://rstudio.com/products/rstudio/download/#download">RStudio website</a>
+and follow the instructions.</p>
+
+<h3 id="run-r-in-the-cloud">Run R in the cloud</h3>
+<p>There are several cloud computing options. I will list two.</p>
+<ol>
+  <li><a href="https://colab.to/r">Google Colab</a><br />
+Google Colab supports R kernel in addition to python kernels. To launch a Jupyter instance with
+R kernel go to <a href="https://colab.to/r">https://colab.to/r</a>. This is a complete environment and 
+sufficient for all statistical calculations and plotting. The only drawback compared to a local
+installation is that it does not have all the packages, and it can be difficult to install some
+uncommon packages with dependencies.</li>
+  <li><a href="https://rdrr.io/snippets/">rdrr</a><br />
+This is a website ideal to run snippets of R code. It is not possible to plot using this website 
+(as of writing). It is ideal for one-liners and demonstrations of R code in action. I use this 
+site frequently in my classes. To run R code snippets go to <a href="https://rdrr.io/snippets/">https://rdrr.io/snippets/</a>.</li>
+</ol>
+
+<h2 id="data-types">Data types</h2>
+
+<p>Data types are the strongest suite for R. Of the possible data types, 3 are of interest to us.</p>
+<ol>
+  <li>Vectors</li>
+  <li>Matrices</li>
+  <li>Data frames</li>
+</ol>
+
+<h3 id="vectors">Vectors</h3>
+
+<p>Someone told me everything in R is a vector. While that is not entirely correct, it captures 
+the essence of using R. R speeds up statistical calculations by handling long sequences as 
+vectors. Since statistical calculations mostly consists of crunching long sequence of numbers 
+to extract meaning out of them, the ability to load data as a vector is a major productivity boost.</p>
+
+<p>So how do we generate these vectors?
+We generate a range of integers using the : operator. 
+(If you have not started the R IDE already then do so before proceeding further).</p>
+<pre><code class="language-commandline">&gt; 0:5
+[1] 0 1 2 3 4 5
+&gt; 0:10
+ [1]  0  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+<p>The first command generates integers from 0 to 5, and the second one generates integers from 0 to 10.
+To get a vector from this sequence we use</p>
+<pre><code class="language-commandline">&gt; c(0:5)
+[1] 0 1 2 3 4 5
+&gt; c(0:10)
+ [1]  0  1  2  3  4  5  6  7  8  9 10
+</code></pre>
+<p><code class="language-plaintext highlighter-rouge">c()</code> combines the output into a vector. We will use this to generate vectors.</p>
+<pre><code class="language-commandline">&gt; c(1:10, 20:30)
+ [1]  1  2  3  4  5  6  7  8  9 10 20 21 22 23 24 25 26 27 28 29 30
+</code></pre>
+<p>Combines 2 separate sequences into a single vector.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; p = c(1:10, 20:30)
+&gt; p
+ [1]  1  2  3  4  5  6  7  8  9 10 20 21 22 23 24 25 26 27 28 29 30
+</code></pre></div></div>
+<p>Saves the vector in a variable <code class="language-plaintext highlighter-rouge">p</code> which is also called a vector.</p>
+
+<p>We are not restricted to generating integers only. We can generate any sequence using the <code class="language-plaintext highlighter-rouge">seq</code>
+function.</p>
+<pre><code class="language-commandline">&gt; seq(0,10,0.25)
+ [1]  0.00  0.25  0.50  0.75  1.00  1.25  1.50  1.75  2.00  2.25  2.50  2.75  3.00  3.25
+[15]  3.50  3.75  4.00  4.25  4.50  4.75  5.00  5.25  5.50  5.75  6.00  6.25  6.50  6.75
+[29]  7.00  7.25  7.50  7.75  8.00  8.25  8.50  8.75  9.00  9.25  9.50  9.75 10.00
+</code></pre>
+
+<h4 id="operations-on-vectors">Operations on vectors</h4>
+<p>We can perform mathematical operations on vectors of R in the same way we do with regular vectors.</p>
+<h5 id="multiply-each-element-of-a-vector-by-a-scalar">Multiply each element of a vector by a scalar</h5>
+<pre><code class="language-commandline">&gt; p = c(1:10)*2
+&gt; p
+ [1]  2  4  6  8 10 12 14 16 18 20
+&gt; 2*p
+ [1]  4  8 12 16 20 24 28 32 36 40
+</code></pre>
+<h5 id="add-two-vectors">Add two vectors</h5>
+<pre><code class="language-commandline">&gt; p = c(1:10)
+&gt; p
+ [1]  1  2  3  4  5  6  7  8  9 10
+&gt; q = c(1:10)*2
+&gt; q
+ [1]  2  4  6  8 10 12 14 16 18 20
+&gt; p+q
+ [1]  3  6  9 12 15 18 21 24 27 30
+</code></pre>
+<h5 id="dot-product-of-vectors">Dot product of vectors</h5>
+<pre><code class="language-commandline">&gt; p
+ [1]  1  2  3  4  5  6  7  8  9 10
+&gt; q
+ [1]  2  4  6  8 10 12 14 16 18 20
+&gt; p*q
+ [1]   2   8  18  32  50  72  98 128 162 200
+</code></pre>
+<h4 id="slicing">Slicing</h4>
+<p>We can extract specific values, or a range of values from vectors or matrices. This is known as 
+slicing.</p>
+<pre><code class="language-commandline">&gt; p = c(1:5)*2 + c(1:5)^0.5
+&gt; p
+[1]  3.000000  5.414214  7.732051 10.000000 12.236068
+&gt; p[2:4]
+[1]  5.414214  7.732051 10.000000
+</code></pre>
+<p>The above code extracts the values in p from location 2 to 4.</p>
+
+<h3 id="matrices">Matrices</h3>
+
+<p>Matrices can be generated in several ways. Here are some examples.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; matrix(c(1:9))
+      [,1]
+ [1,]    1
+ [2,]    2
+ [3,]    3
+ [4,]    4
+ [5,]    5
+ [6,]    6
+ [7,]    7
+ [8,]    8
+ [9,]    9
+</code></pre></div></div>
+<p>Passing a vector <code class="language-plaintext highlighter-rouge">c(1:9)</code> to the matrix function generates a column matrix when no other 
+arguments are set.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; matrix(c(0:9), ncol = 2)
+     [,1] [,2]
+[1,]    0    5
+[2,]    1    6
+[3,]    2    7
+[4,]    3    8
+[5,]    4    9
+&gt; matrix(c(0:9), nrow = 2)
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    0    2    4    6    8
+[2,]    1    3    5    7    9
+</code></pre></div></div>
+<p>Setting values for <code class="language-plaintext highlighter-rouge">nrow=2</code> generates a matrix with 2 rows. If the total number of elements passed
+to <code class="language-plaintext highlighter-rouge">matrix</code> is not divisible by 2, R will raise an error.</p>
+<h4 id="slicing-1">Slicing</h4>
+<p>Matrices have more one dimension, hence we can slice them in differnt ways.</p>
+<pre><code class="language-commandline">&gt; p = matrix(c(0:9), nrow = 2)
+&gt; p
+     [,1] [,2] [,3] [,4] [,5]
+[1,]    0    2    4    6    8
+[2,]    1    3    5    7    9
+&gt; p[1,]
+[1] 0 2 4 6 8
+</code></pre>
+<p>This code extracts the first row of the matrix.</p>
+<pre><code class="language-commandline">&gt; p[2,]
+[1] 1 3 5 7 9
+</code></pre>
+<p>The above code extracts the second row of the matrix.</p>
+<pre><code class="language-commandline">&gt; p[,3]
+[1] 4 5
+</code></pre>
+<p>The above code extracts the third column of the matrix.</p>
+<pre><code class="language-commandline">&gt; p[,3:5]
+     [,1] [,2] [,3]
+[1,]    4    6    8
+[2,]    5    7    9
+</code></pre>
+<p>The above code extracts the columns 3 to 5 from the matrix.</p>
+
+<h3 id="data-frames">Data frames</h3>
+
+<p>Data frames are extremely useful constructs. Imagine an Excel table packaged into a single variable.
+Most functions in R, for example <code class="language-plaintext highlighter-rouge">lm</code> in linear regression, needs data in <code class="language-plaintext highlighter-rouge">data.frame</code> format.
+Each column in a <code class="language-plaintext highlighter-rouge">data.frame</code> can be of separate type. We will start with datasets formatted
+as dataframes that come pre-installed in R. Type in <code class="language-plaintext highlighter-rouge">mtcars</code> at the R prompt and hit enter.</p>
+<pre><code class="language-commandline">&gt; mtcars
+                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+</code></pre>
+<p>To explore the basic structure of the data frame without displaying the entire data, we can use</p>
+<pre><code class="language-commandline">&gt; head(mtcars)
+                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+</code></pre>
+<p>We see that the data frame has column names and row names. 
+To grab data from a single column we separate the column name from the dataframe name with a $ 
+symbol.</p>
+<pre><code class="language-commandline">&gt; mtcars$mpg
+ [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4 10.4
+[17] 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7 15.0 21.4
+&gt; mtcars$carb
+ [1] 4 4 1 1 2 1 4 2 2 4 4 3 3 3 4 4 4 1 2 1 1 2 2 4 2 1 2 2 4 6 8 2
+</code></pre>
+
+<h1 id="statistics-with-r">Statistics with R</h1>
+
+<p>There are thousands of statistical packages available to perform statistical computations in R.
+R itself has several built-in functions to handle the most common statistical computations.</p>
+
+<h2 id="mean-and-standard-deviation">Mean and Standard deviation</h2>
+<pre><code class="language-commandline">&gt; mean(mtcars$mpg)
+[1] 20.09062
+</code></pre>
+<p>finds the mean of mpg of cars in the dataset <code class="language-plaintext highlighter-rouge">mtcars</code> (see above).</p>
+<pre><code class="language-commandline">&gt; sd(mtcars$mpg)
+[1] 6.026948
+</code></pre>
+<p>finds the standard deviation of mpg of cars in the dataset <code class="language-plaintext highlighter-rouge">mtcars</code> (see above).</p>
+
+<h2 id="p-values-from-z-score">p-values from z-score</h2>
+
+<p>We can calculate the cumulative distribution of a normal distribution using the <code class="language-plaintext highlighter-rouge">pnorm()</code> function.</p>
+<pre><code class="language-commandline">&gt; pnorm(0)
+[1] 0.5
+&gt; pnorm(-1.96)
+[1] 0.0249979
+</code></pre>
+<p>Given a z-score of 1.96 the p-value for a right-tailed test would be</p>
+<pre><code class="language-commandline">&gt; 1-pnorm(1.96)
+[1] 0.0249979
+</code></pre>
+<p>For more insight into how to calculate the p-values, see the tutorial on 
+<a href="/tutorials/tutorials-lectures-normal-distribution.html">Normal Distribution</a>.</p>
+
+<h1 id="plotting-with-r">Plotting with R</h1>
+
+<p>Plotting in R is simple when using dataframe.</p>
+<pre><code class="language-commandline">&gt; head(cars)
+  speed dist
+1     4    2
+2     4   10
+3     7    4
+4     7   22
+5     8   16
+6     9   10
+&gt; plot(cars)
+</code></pre>
+<p><img src="/img/posts/rintro0.png" alt="drawing" />
+The x and y axes are automatically selected from the columns of the dataframe. Since the <code class="language-plaintext highlighter-rouge">cars</code>
+dataset contain only 2 columns, the first and the second columns are automatically selected as x and 
+y. 
+We can generate x and y separately too.</p>
+<pre><code class="language-commandline">&gt; x=seq(0,10,0.25)
+&gt; y = x^2 * exp(-x)
+&gt; plot(x,y)
+</code></pre>
+<p><img src="/img/posts/rintro1.png" alt="drawing" />
+Since x is a vector, the function y(x) is also a vector. The resulting plot with only the data points 
+is plotted above.</p>
+<pre><code class="language-commandline">&gt; x=seq(0,10,0.25)
+&gt; y = x^2 * exp(-x)
+&gt; plot(x,y,type = 'l')
+</code></pre>
+<p><img src="/img/posts/rintro2.png" alt="drawing" />
+Using <code class="language-plaintext highlighter-rouge">type='l'</code> will produce the same plot but with the data points joined by lines.</p>
+
+<h2 id="plotting-histograms">Plotting histograms</h2>
+
+<p>To demonstrate the plotting of histograms we generate 50 random numbers from a normal distribution</p>
+<pre><code class="language-commandline">&gt; y=rnorm(50)
+&gt; hist(y)
+</code></pre>
+<p><img src="/img/posts/73fb22de-a179-4643-a70f-b89d6f155318.png" alt="drawing" />
+<code class="language-plaintext highlighter-rouge">hist()</code> function generates a histogram by automatically choosing a bin size, with the default number of 
+bins being 10. From the above histogram, it is apparent that the bin size should be increased, to make it 
+resemble a normal distrobution (from which the values have been sampled). To increase bin size, we can decrease the
+number of bins that R uses to plot the histogram by adding the <code class="language-plaintext highlighter-rouge">breaks=n</code> argument.</p>
+<pre><code class="language-commandline">&gt; y=rnorm(50)
+&gt; hist(y, breaks=5)
+</code></pre>
+<p><img src="/img/posts/fc3663a0-3303-40ce-ac61-98349da813c7.png" alt="drawing" /></p>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:saugata.ch@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://twitter.com/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/in/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/saugatach">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Saugata chatterjee 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+</body>
+
+</html>
