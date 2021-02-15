@@ -1,55 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
 
-{% include structure/head.html %}
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_CHTML">
+</script>
+<html>
+
+{% include head.html %}
 
 <body>
 
-{% include bars/nav.html %}
+  {% include navbar.html %}
 
-{% capture col1 %}{% if page.narrow %}3{% else %}4{% endif %}{% endcapture %}
+  {{ content }}
 
-{% capture col2 %}{% if page.narrow %}9{% else %}8{% endif %}{% endcapture %}
+  {% include footer.html %}
 
-<div class="container site-container" id="top">
-    <div class="row">
-        <div class="d-none d-lg-block col-lg-4 col-xl-{{ col1 }} side">
-            {% include bars/side.html %}
-        </div>
-        <div class="col-md-12 col-lg-8 col-xl-{{ col2 }} pb-4 content">
-            {{ content }}
-        </div>
-        <div class="col-md-12 d-lg-none bottom">
-            {% include bars/bottom.html %}
-        </div>
-    </div>
-</div>
+  {% include scripts.html %}
 
-<script type="text/javascript">
-/*!
- * IE10 viewport hack for Surface/desktop Windows 8 bug
- * Copyright 2014-2017 The Bootstrap Authors
- * Copyright 2014-2017 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-// See the Getting Started docs for more information:
-// https://getbootstrap.com/getting-started/#support-ie10-width
-
-(function () {
-    'use strict'
-
-    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-        var msViewportStyle = document.createElement('style')
-        msViewportStyle.appendChild(
-            document.createTextNode(
-                '@-ms-viewport{width:auto!important}'
-            )
-        )
-        document.head.appendChild(msViewportStyle)
-    }
-}())
-</script>
+  {% include google-analytics.html %}
 
 </body>
 
