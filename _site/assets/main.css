@@ -24,7 +24,7 @@ img::selection { color: #fff; background: transparent; }
 
 img::-moz-selection { color: #fff; background: transparent; }
 
-img[alt=drawing] { width: 800px; }
+img[alt=drawing] { max-width: 100%; }
 
 pre, code { background-color: #fdf6ee; }
 
