@@ -6,7 +6,7 @@ background: '/img/bg-research.jpg'
 ---
 # Research
 
-My past research primarily focussed on black hole entropy and information loss. 
+My past research was on black hole entropy and information loss. 
 Currently, my research is focussed on machine learning and application of ML.
 ## Physics
 My research interests include 

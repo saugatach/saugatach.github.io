@@ -2,7 +2,7 @@
 layout: page
 title: About Me
 description: This is what I do.
-background: '/img/bg-index.jpg'
+background: '/img/bg-about.jpg'
 ---
 My name is Saugata Chatterjee (find me on [LinkedIn][linkedin] ).
 I am a physicist turned statistics instructor.
