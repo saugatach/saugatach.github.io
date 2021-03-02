@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Python script to generate blog post filenames from titles"
-date: 2020-02-05
+date: 2021-02-05
 background: '/img/bg-posts-black-blur.jpg'
 ---
 

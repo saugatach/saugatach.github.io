@@ -22,7 +22,7 @@ The answer.
 But why 18% and not 95%. This is due to the sampling process. All possible combinations of 
 ```(# of immune, # of non-immune)``` under the constraint that ```# of immune + # of non-immune = 100```
 are allowed to occur with a finite probability. Not all those probabilities are equal. Some are 
-more probable and some are less probable. Plotting the probabilities produces the following graph.
+more probable, and some are less probable. Plotting the probabilities produces the following graph.
 
 ![drawing](/img/posts/binomial1.png)
 
@@ -32,6 +32,12 @@ of 100) is similar to that of getting 95 or 96. In fact, a series of values whic
 finite probabilities. The probabilities are distributed over a range of probable values in the form 
 of a bell-shaped structure that we see in the graph. This is known as a distribution, and in this case,
 it is called a **binomial distribution**.  
+
+Let's wrap up the discussion about the vaccines. There is no fallacy about the population immunity being 
+95% and sample immunity being 18%. The probability that exactly 95 out of 100 gets immunity is 18%. 
+What we really want to know is what is the probability that at least 95 out of 100 develops immunity.
+And that requires a few extra steps. 
+See [here]({% post_url 2021-02-24-probability-of-developing-immunity-from-covid-vaccine %}) for the full discussion. 
 
 # Binomial Distribution
 

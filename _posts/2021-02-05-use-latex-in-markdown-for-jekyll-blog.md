@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Use Latex in markdown for Jekyll blog"
-date: 2020-02-05
+date: 2021-02-05
 background: '/img/bg-posts-black-blur.jpg'
 ---
 $$\LaTeX$$ is very convenient is writing complex equations. It is an indispensable tool for 
