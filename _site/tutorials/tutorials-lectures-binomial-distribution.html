@@ -133,7 +133,7 @@ what is the probability that 95 of them develop immunity?
 <p>But why 18% and not 95%. This is due to the sampling process. All possible combinations of
 <code class="language-plaintext highlighter-rouge">(# of immune, # of non-immune)</code> under the constraint that <code class="language-plaintext highlighter-rouge"># of immune + # of non-immune = 100</code>
 are allowed to occur with a finite probability. Not all those probabilities are equal. Some are 
-more probable and some are less probable. Plotting the probabilities produces the following graph.</p>
+more probable, and some are less probable. Plotting the probabilities produces the following graph.</p>
 
 <p><img src="/img/posts/binomial1.png" alt="drawing" /></p>
 
@@ -143,6 +143,12 @@ of 100) is similar to that of getting 95 or 96. In fact, a series of values whic
 finite probabilities. The probabilities are distributed over a range of probable values in the form 
 of a bell-shaped structure that we see in the graph. This is known as a distribution, and in this case,
 it is called a <strong>binomial distribution</strong>.</p>
+
+<p>Let’s wrap up the discussion about the vaccines. There is no fallacy about the population immunity being 
+95% and sample immunity being 18%. The probability that exactly 95 out of 100 gets immunity is 18%. 
+What we really want to know is what is the probability that at least 95 out of 100 develops immunity.
+And that requires a few extra steps. 
+See <a href="/2021/02/24/probability-of-developing-immunity-from-covid-vaccine.html">here</a> for the full discussion.</p>
 
 <h1 id="binomial-distribution">Binomial Distribution</h1>
 
