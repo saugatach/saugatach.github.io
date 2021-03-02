@@ -1,4 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-02-23T11:16:49-07:00</updated><id>/feed.xml</id><title type="html">Bytes of wisdom</title><subtitle>We share tutorials, ideas, and recipes on this blog on physics, linux, and data analysis</subtitle><author><name>Saugata Chatterjee</name></author><entry><title type="html">Python script to generate blog post filenames from titles</title><link href="/2020/02/05/python-script-to-generate-blog-post-filenames-from-titles.html" rel="alternate" type="text/html" title="Python script to generate blog post filenames from titles" /><published>2020-02-05T00:00:00-07:00</published><updated>2020-02-05T00:00:00-07:00</updated><id>/2020/02/05/python-script-to-generate-blog-post-filenames-from-titles</id><content type="html" xml:base="/2020/02/05/python-script-to-generate-blog-post-filenames-from-titles.html">&lt;p&gt;Jekyll makes it easy to publish posts. The url for the post is automatically generated from the file name. 
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-02T16:13:55-07:00</updated><id>/feed.xml</id><title type="html">Bytes of wisdom</title><subtitle>We share tutorials, ideas, and recipes on this blog on physics, linux, and data analysis</subtitle><author><name>Saugata Chatterjee</name></author><entry><title type="html">Probability of developing immunity from Covid vaccine</title><link href="/2021/02/24/probability-of-developing-immunity-from-covid-vaccine.html" rel="alternate" type="text/html" title="Probability of developing immunity from Covid vaccine" /><published>2021-02-24T00:00:00-07:00</published><updated>2021-02-24T00:00:00-07:00</updated><id>/2021/02/24/probability-of-developing-immunity-from-covid-vaccine</id><content type="html" xml:base="/2021/02/24/probability-of-developing-immunity-from-covid-vaccine.html">&lt;p&gt;Recently, I came across this question which someone claimed to lead to a fallacy.&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;If the covid vaccine has 95% efficacy, then if we sample 100 people, 
+what is the probability that 95 of them develop immunity?
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The answer.&lt;br /&gt;
+P(95 immune, 5 not immune) = \({}^{100}C_{95} \times (0.95)^{95} \times (0.05)^5 = 0.18 = 18\%\)&lt;/p&gt;
+
+&lt;p&gt;The answer to this question seems fallacious, but it is not.&lt;/p&gt;
+
+&lt;p&gt;But why 18% and not 95%. Aren’t we supposed to get 95% probability that 95 people develop immunity 
+from the covid vaccine?&lt;/p&gt;
+
+&lt;p&gt;There is no fallacy about the population immunity being 95% and sample immunity being 18%. The probability that exactly 
+95 out of 100 gets immunity is 18%. What we really want to know is what is the probability that at least 95 out of 
+100 develops immunity.&lt;/p&gt;
+
+&lt;p&gt;All possible combinations of
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(# of immune, # of non-immune)&lt;/code&gt; under the constraint that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# of immune + # of non-immune = 100&lt;/code&gt;
+are allowed to occur with a finite probability. Not all those probabilities are equal. Some are 
+more probable, and some are less probable. Plotting the probabilities produces the following graph.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/binomial1.png&quot; alt=&quot;drawing&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From the plot we see that the probability peaks around 95 and then trails off in either direction. 
+So, although the values sharply peak at 95, the probability of getting 94 immune individuals (out 
+of 100) is similar to that of getting 95 or 96. In fact, a series of values which are not 95 have 
+finite probabilities. The correct question to ask would be&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-commandline&quot;&gt;If the covid vaccine has 95% efficacy, then if we sample 100 people, 
+what is the expected number of immune individuals?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The answer: 95.
+While the probability for 95 immune individuals from a group of 100 is 18%, the expected value 
+(the expected value is the mean value) is \(\Sigma ( n(x) p(x) ) = 95\).&lt;/p&gt;</content><author><name>Saugata Chatterjee</name></author><summary type="html">Recently, I came across this question which someone claimed to lead to a fallacy.</summary></entry><entry><title type="html">Python script to generate blog post filenames from titles</title><link href="/2020/02/05/python-script-to-generate-blog-post-filenames-from-titles.html" rel="alternate" type="text/html" title="Python script to generate blog post filenames from titles" /><published>2020-02-05T00:00:00-07:00</published><updated>2020-02-05T00:00:00-07:00</updated><id>/2020/02/05/python-script-to-generate-blog-post-filenames-from-titles</id><content type="html" xml:base="/2020/02/05/python-script-to-generate-blog-post-filenames-from-titles.html">&lt;p&gt;Jekyll makes it easy to publish posts. The url for the post is automatically generated from the file name. 
 The date and time is extracted too. We, however, need to provide a filename for the markdown file which 
 becomes its URL. 
 The following set of python commands will generate the filename from the post title and save us the 
