@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="/tutorials/tutorials-lectures-binomial-distribution.html">
+  <link rel="canonical" href="http://localhost:4000/tutorials/tutorials-lectures-binomial-distribution.html">
   <link rel="alternate" type="application/rss+xml" title="Bytes of wisdom" href="/feed.xml">
 
 </head>
@@ -164,26 +164,26 @@ Let<br />
 p = P(H) = probability of landing on heads, and<br />
 q = P(T) = probability of landing on tails.</p>
 
-<p>The probability of getting HTH is \(P(H) \times P(T) \times P(H) = p \times q \times p = p^2q\). 
+<p>The probability of getting HTH is <script type="math/tex">P(H) \times P(T) \times P(H) = p \times q \times p = p^2q</script>. 
 Now, these are 3 possible ways of getting 2H and 1T since there are three unique possibilities 
 only {HHT, HTH, THH}. Therefore, the probability of getting 2H and 1T is<br />
-\(P(2H,1T) = 3p^2q\)</p>
+<script type="math/tex">P(2H,1T) = 3p^2q</script></p>
 
 <p>We can avoid explicit counting of elements, and directly calculate the number of possible events 
-with 2H and 1T as \({}^3C_2\) since we are choosing 2 heads out of possible 3 outcomes and there 
-are only  \({}^3C_2\) (read 3 choose 2) ways of doing it.  <br />
-\(P(2H,1T) = {}^3C_2p^2q\)</p>
+with 2H and 1T as <script type="math/tex">{}^3C_2</script> since we are choosing 2 heads out of possible 3 outcomes and there 
+are only  <script type="math/tex">{}^3C_2</script> (read 3 choose 2) ways of doing it.  <br />
+<script type="math/tex">P(2H,1T) = {}^3C_2p^2q</script></p>
 
 <p>If we have N tosses, and a series of r Heads, then there must be (N-r) tails.<br />
 The probability for {HHHH…(r-times)T….((N-r)-times)} is 
-\(p \times p \times \cdots (r-times) \times q \times  q \times  \cdots ((N-r)-times) = p^r q^{N-r}\).</p>
+<script type="math/tex">p \times p \times \cdots (r-times) \times q \times  q \times  \cdots ((N-r)-times) = p^r q^{N-r}</script>.</p>
 
 <p>The combined probability for r heads and N-r tails is<br />
-\(P(rH,(N-r)T) = {}^NC_r p^r q^{N-r}\)<br />
-as there are \({}^NC_r\) (read N choose r) ways of choosing r heads out of N tosses. 
-This formula is universally applicable to all binomial distributions. Since \(p+q=1\) we can 
+<script type="math/tex">P(rH,(N-r)T) = {}^NC_r p^r q^{N-r}</script><br />
+as there are <script type="math/tex">{}^NC_r</script> (read N choose r) ways of choosing r heads out of N tosses. 
+This formula is universally applicable to all binomial distributions. Since <script type="math/tex">p+q=1</script> we can 
 rewrite this as<br />
-\(P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}\)</p>
+<script type="math/tex">P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}</script></p>
 
 <h3 id="example-1">Example 1</h3>
 <p>An unfair coin has a probability of landing on heads 60% of the time. If the same coin is tossed 
@@ -201,12 +201,12 @@ P(H) = p = 60% = 0.6 <br />
 Since probability of getting tails = P(T) = q = 1 - p (see above)<br />
 P(T) = q = 1-0.6 = 0.4<br />
 Plugging in the values {N = 5, r = 5, p = 0.6, q = 0.4} in the formula 
-\(P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}\)<br />
-\(P(5H,0T) = {}^5C_5 \times (0.6)^5 \times (0.4)^0 = 1 \times 0.07776 \times 1 = 0.07776\)<br />
-Note: Anything raised to the power of zero is 1. This implies \((0.4)^0 = 1\). 
-Note: \({}^NC_N = 1\). This implies \({}^5C_5 = 1\). 
+<script type="math/tex">P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}</script><br />
+<script type="math/tex">P(5H,0T) = {}^5C_5 \times (0.6)^5 \times (0.4)^0 = 1 \times 0.07776 \times 1 = 0.07776</script><br />
+Note: Anything raised to the power of zero is 1. This implies <script type="math/tex">(0.4)^0 = 1</script>. 
+Note: <script type="math/tex">{}^NC_N = 1</script>. This implies <script type="math/tex">{}^5C_5 = 1</script>. 
 We convert this to a percentage and round to 2 decimal places and have the final answer<br />
-   \(P(5H,0T) = 7.78\%\)</p>
+   <script type="math/tex">P(5H,0T) = 7.78\%</script></p>
 
 <p><strong>Table method</strong>
 Here we show you how to use the table method to calculate the probability of an event belonging 
@@ -256,7 +256,7 @@ percentages to decimals before using them in the formula for the binomial distri
       <th> </th>
       <th>Probability(p)</th>
       <th># of events(r)</th>
-      <th>\(p^r\)</th>
+      <th><script type="math/tex">p^r</script></th>
     </tr>
   </thead>
   <tbody>
@@ -291,7 +291,7 @@ have 5 heads so there are 5 successes, and there are no tails, so that means the
       <th> </th>
       <th>Probability(p)</th>
       <th># of events(r)</th>
-      <th>\(p^r\)</th>
+      <th><script type="math/tex">p^r</script></th>
     </tr>
   </thead>
   <tbody>
@@ -325,7 +325,7 @@ Now, for the third column we exponentiate the values in column 1 with the values
       <th> </th>
       <th>Probability(p)</th>
       <th># of events(r)</th>
-      <th>\(p^r\)</th>
+      <th><script type="math/tex">p^r</script></th>
     </tr>
   </thead>
   <tbody>
@@ -333,28 +333,28 @@ Now, for the third column we exponentiate the values in column 1 with the values
       <td>Success</td>
       <td>0.6</td>
       <td>5</td>
-      <td>\((0.6)^5\)</td>
+      <td><script type="math/tex">(0.6)^5</script></td>
     </tr>
     <tr>
       <td>Failure</td>
       <td>0.4</td>
       <td>0</td>
-      <td>\((0.4)^0\)</td>
+      <td><script type="math/tex">(0.4)^0</script></td>
     </tr>
     <tr>
       <td>Total</td>
       <td>1</td>
       <td>5</td>
-      <td>\({}^5C_5\)</td>
+      <td><script type="math/tex">{}^5C_5</script></td>
     </tr>
   </tbody>
 </table>
 
-<p>We did not do a total in the last row of the last column. Instead, we found the pre-factor \({}^NC_r\).
+<p>We did not do a total in the last row of the last column. Instead, we found the pre-factor <script type="math/tex">{}^NC_r</script>.
 If this is confusing you can ignore the last row.</p>
 
 <p>Now, multiply everything in the last column, and you will have your answer.<br />
-\(P(5H,0T) = {}^5C_5 \times (0.6)^5 \times (0.4)^0 = 1 \times 0.07776 \times 1 = 0.07776 = 7.78\%\)</p>
+<script type="math/tex">P(5H,0T) = {}^5C_5 \times (0.6)^5 \times (0.4)^0 = 1 \times 0.07776 \times 1 = 0.07776 = 7.78\%</script></p>
 
 <p>Although, this process might seem contrived and a roundabout way of calculating obvious quantities, I have noticed through 
 experience that students perform better with the table method when presented with a complex in 
@@ -363,8 +363,8 @@ with probability of failures. The table method provides a visual aid to prevent 
 
 <p>2. <strong>2 heads</strong><br />
 Plugging in the values {N = 5, r = 2, p = 0.6, q = 0.4} in the formula 
-\(P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}\)<br />
-\(P(2H,3T) = {}^5C_2 \times (0.6)^2 \times (0.4)^{5-2} = 10 \times (0.6)^2 \times (0.4)^3 = 0.2304 = 23.04\%\)</p>
+<script type="math/tex">P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}</script><br />
+<script type="math/tex">P(2H,3T) = {}^5C_2 \times (0.6)^2 \times (0.4)^{5-2} = 10 \times (0.6)^2 \times (0.4)^3 = 0.2304 = 23.04\%</script></p>
 
 <p><strong>Table method</strong></p>
 
@@ -374,7 +374,7 @@ Plugging in the values {N = 5, r = 2, p = 0.6, q = 0.4} in the formula
       <th> </th>
       <th>Probability(p)</th>
       <th># of events(r)</th>
-      <th>\(p^r\)</th>
+      <th><script type="math/tex">p^r</script></th>
     </tr>
   </thead>
   <tbody>
@@ -382,29 +382,29 @@ Plugging in the values {N = 5, r = 2, p = 0.6, q = 0.4} in the formula
       <td>Success</td>
       <td>0.6</td>
       <td>2</td>
-      <td>\((0.6)^2\)</td>
+      <td><script type="math/tex">(0.6)^2</script></td>
     </tr>
     <tr>
       <td>Failure</td>
       <td>0.4</td>
       <td>3</td>
-      <td>\((0.4)^3\)</td>
+      <td><script type="math/tex">(0.4)^3</script></td>
     </tr>
     <tr>
       <td>Total</td>
       <td>1</td>
       <td>5</td>
-      <td>\({}^5C_2\)</td>
+      <td><script type="math/tex">{}^5C_2</script></td>
     </tr>
   </tbody>
 </table>
 
-\[P(2H,3T) = {}^5C_2 \times (0.6)^2 \times (0.4)^{5-2} = 10 \times (0.6)^2 \times (0.4)^3 = 0.2304 = 23.04\%\]
+<script type="math/tex; mode=display">P(2H,3T) = {}^5C_2 \times (0.6)^2 \times (0.4)^{5-2} = 10 \times (0.6)^2 \times (0.4)^3 = 0.2304 = 23.04\%</script>
 
 <p>3. <strong>1 heads</strong><br />
 Plugging in the values {N = 5, r = 1, p = 0.6, q = 0.4} in the formula 
-\(P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}\)<br />
-\(P(1H,4T) = {}^5C_1 \times (0.6)^1 \times (0.4)^{5-1} = 5 \times (0.6) \times (0.4)^4 = 0.0768 = 7.68\%\)</p>
+<script type="math/tex">P(rH,(N-r)T) = {}^NC_r p^r (1-p)^{N-r}</script><br />
+<script type="math/tex">P(1H,4T) = {}^5C_1 \times (0.6)^1 \times (0.4)^{5-1} = 5 \times (0.6) \times (0.4)^4 = 0.0768 = 7.68\%</script></p>
 
 <p><strong>Table method</strong></p>
 
@@ -414,7 +414,7 @@ Plugging in the values {N = 5, r = 1, p = 0.6, q = 0.4} in the formula
       <th> </th>
       <th>Probability(p)</th>
       <th># of events(r)</th>
-      <th>\(p^r\)</th>
+      <th><script type="math/tex">p^r</script></th>
     </tr>
   </thead>
   <tbody>
@@ -422,24 +422,24 @@ Plugging in the values {N = 5, r = 1, p = 0.6, q = 0.4} in the formula
       <td>Success</td>
       <td>0.6</td>
       <td>1</td>
-      <td>\((0.6)^1\)</td>
+      <td><script type="math/tex">(0.6)^1</script></td>
     </tr>
     <tr>
       <td>Failure</td>
       <td>0.4</td>
       <td>4</td>
-      <td>\((0.4)^4\)</td>
+      <td><script type="math/tex">(0.4)^4</script></td>
     </tr>
     <tr>
       <td>Total</td>
       <td>1</td>
       <td>5</td>
-      <td>\({}^5C_1\)</td>
+      <td><script type="math/tex">{}^5C_1</script></td>
     </tr>
   </tbody>
 </table>
 
-\[P(1H,4T) = {}^5C_1 \times (0.6)^1 \times (0.4)^{5-1} = 5 \times (0.6) \times (0.4)^4 = 0.0768 = 7.68\%\]
+<script type="math/tex; mode=display">P(1H,4T) = {}^5C_1 \times (0.6)^1 \times (0.4)^{5-1} = 5 \times (0.6) \times (0.4)^4 = 0.0768 = 7.68\%</script>
 
 <h3 id="example-2">Example 2</h3>
 <p>If the covid vaccine has 95% efficacy, then if we sample 100 people, 
@@ -466,7 +466,7 @@ Number of failure = 5</p>
       <th> </th>
       <th>Probability(p)</th>
       <th># of events(r)</th>
-      <th>\(p^r\)</th>
+      <th><script type="math/tex">p^r</script></th>
     </tr>
   </thead>
   <tbody>
@@ -474,24 +474,24 @@ Number of failure = 5</p>
       <td>Success</td>
       <td>0.95</td>
       <td>95</td>
-      <td>\((0.95)^{95}\)</td>
+      <td><script type="math/tex">(0.95)^{95}</script></td>
     </tr>
     <tr>
       <td>Failure</td>
       <td>0.05</td>
       <td>5</td>
-      <td>\((0.05)^5\)</td>
+      <td><script type="math/tex">(0.05)^5</script></td>
     </tr>
     <tr>
       <td>Total</td>
       <td>1</td>
       <td>5</td>
-      <td>\({}^{100}C_{95}\)</td>
+      <td><script type="math/tex">{}^{100}C_{95}</script></td>
     </tr>
   </tbody>
 </table>
 
-<p>P(95 immune, 5 not immune) = \({}^{100}C_{95} \times (0.95)^{95} \times (0.05)^5 = 0.18 = 18\%\)</p>
+<p>P(95 immune, 5 not immune) = <script type="math/tex">{}^{100}C_{95} \times (0.95)^{95} \times (0.05)^5 = 0.18 = 18\%</script></p>
 
 <h2 id="r-lab">R Lab</h2>
 
@@ -519,7 +519,7 @@ Specifically, we will lean three things</p>
 <h4 id="calculating-probability-of-a-single-event-from-a-binomial-distribution">Calculating probability of a single event from a binomial distribution</h4>
 <p><strong>Example 1.3</strong>
 Calculating the probability of P(2H,3T) from Example 1.3 above 
-\(P(2H,3T) = {}^5C_2 \times (0.6)^2 \times (0.4)^{5-2} = 10 \times (0.6)^2 \times (0.4)^3 = 0.2304 = 23.04\%\)
+<script type="math/tex">P(2H,3T) = {}^5C_2 \times (0.6)^2 \times (0.4)^{5-2} = 10 \times (0.6)^2 \times (0.4)^3 = 0.2304 = 23.04\%</script>
 using R we get</p>
 <pre><code class="language-commandline">&gt; choose(5,2)*(0.6)^2*(0.4)^3
 [1] 0.2304
@@ -527,7 +527,7 @@ using R we get</p>
 
 <p><strong>Example 2</strong>
 Calculating the probability of P(95 immune, 5 not immune) from Example 2 above
-P(95 immune, 5 not immune) = \({}^{100}C_{95} \times (0.95)^{95} \times (0.05)^5 = 0.18 = 18\%\)<br />
+P(95 immune, 5 not immune) = <script type="math/tex">{}^{100}C_{95} \times (0.95)^{95} \times (0.05)^5 = 0.18 = 18\%</script><br />
 using R we get</p>
 <pre><code class="language-commandline">&gt; choose(100,95)*(0.95)^95*(0.05)^5
 [1] 0.1800178

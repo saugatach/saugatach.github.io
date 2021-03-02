@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="/tutorials/tutorials-lectures-normal-distribution.html">
+  <link rel="canonical" href="http://localhost:4000/tutorials/tutorials-lectures-normal-distribution.html">
   <link rel="alternate" type="application/rss+xml" title="Bytes of wisdom" href="/feed.xml">
 
 </head>
@@ -159,8 +159,8 @@ something like this,</p>
 </code></pre>
 
 <p>This bell shaped graph is the Normal Distribution. It is completely specified by only two point estimates of a 
-distribution, mean (\(\mu\) read mu) and variance (\(\sigma^2\) read sigma squared) or equivalently the standard deviation, 
-and is written as: \(N(\mu, \sigma^2)\).</p>
+distribution, mean (<script type="math/tex">\mu</script> read mu) and variance (<script type="math/tex">\sigma^2</script> read sigma squared) or equivalently the standard deviation, 
+and is written as: <script type="math/tex">N(\mu, \sigma^2)</script>.</p>
 
 <p>Most data can be modelled using the Normal Distributions but not all. It is the job of the statistician to verify
 which distribution fits the data best. For example, blood pressure data will follow a normal distribution, but the 
@@ -169,9 +169,9 @@ applications of normal distributions and postpone the discussion of model select
 
 <h3 id="probability-density-function-for-normal-distribution">Probability density function for normal distribution</h3>
 
-<p>Normal distribution is uniquely parametrized by the mean and variance. A noemal distribution \(N(\mu, \sigma^2)\) has the
+<p>Normal distribution is uniquely parametrized by the mean and variance. A noemal distribution <script type="math/tex">N(\mu, \sigma^2)</script> has the
 probability density function (PDF)
-\(P(x) = \frac{1}{\sigma \sqrt(2\pi)} exp^{-\frac{1}{2} \left( \frac{x - \mu}{\sigma} \right)^2 }\)
+<script type="math/tex">P(x) = \frac{1}{\sigma \sqrt(2\pi)} exp^{-\frac{1}{2} \left( \frac{x - \mu}{\sigma} \right)^2 }</script>
 Since this is a continuous distribution, the PDF itself has no meaning, only the cumulative distribution function (CDF).
 We are only interested in the CDF for these lectures.</p>
 
@@ -190,12 +190,12 @@ of well-designed experiments. We will discuss this in the lecture Hypothesis Tes
 of about $7,000. What is the probability of finding a house for \$165,000 or less (assuming all other parameters like sqft 
 being identical).</p>
 
-<p><strong>Solution:</strong> Mean(\(\mu\)) = 175000, SD(\(\sigma\)) = 7000<br />
+<p><strong>Solution:</strong> Mean(<script type="math/tex">\mu</script>) = 175000, SD(<script type="math/tex">\sigma</script>) = 7000<br />
 We find something known as the z-score.
 The formula for the z-score is <br />
-z = \(\frac{X - \mu }{\sigma}\) = (X- mean)/SD<br />
+z = <script type="math/tex">\frac{X - \mu }{\sigma}</script> = (X- mean)/SD<br />
 We plug in the values above to get the following z-score,<br />
-\(z = \frac{165000-175000}{7000} = -1.42\) <br />
+<script type="math/tex">z = \frac{165000-175000}{7000} = -1.42</script> <br />
 We can then look the corresponding cumulative probability value for the normal distribution table using the R-function.</p>
 <pre><code class="language-commandline">&gt; z = (165000-175000)/7000
 &gt; z
@@ -205,9 +205,9 @@ We can then look the corresponding cumulative probability value for the normal d
 </code></pre>
 <p>Therefore, the probability of finding a house listed for $160,000 is 1.6%.</p>
 
-<p>What the z-score does, is that it converts the normal distribution \(N(\mu, \sigma^2)\) to a standard normal distribution
-\(N(0, 1)\). Therefore, the X-values in the normal distribution are mapped to the z-scores in the standard normal distribution.
-The advantage is that, we no longer need to painstakingly find the CDF of \(N(\mu, \sigma^2)\). Instead, we just use 
+<p>What the z-score does, is that it converts the normal distribution <script type="math/tex">N(\mu, \sigma^2)</script> to a standard normal distribution
+<script type="math/tex">N(0, 1)</script>. Therefore, the X-values in the normal distribution are mapped to the z-scores in the standard normal distribution.
+The advantage is that, we no longer need to painstakingly find the CDF of <script type="math/tex">N(\mu, \sigma^2)</script>. Instead, we just use 
 the CDF for standard normal distribution, which is already calculated to great precision.</p>
 
 <p>Let’s look at few examples on how to calculate the z-scores.
@@ -217,7 +217,7 @@ b. X = 112<br />
 c. X = 101</p>
 
 <p><strong>Solution:</strong>
-For all these problems the mean, and the standard deviation are same: Mean(\(\mu\)) = 120, SD(\(\sigma\)) = 15.<br />
+For all these problems the mean, and the standard deviation are same: Mean(<script type="math/tex">\mu</script>) = 120, SD(<script type="math/tex">\sigma</script>) = 15.<br />
 a. X = 135: z = (135-120)/15 = 1<br />
 b. X = 112: z = (112-120)/15 = -0.53<br />
 c. X = 101: z = (101-120)/15 = -1.27 (rounded from -1.266)<br />
@@ -253,9 +253,9 @@ being identical).</p>
 (rather than less than that value). Everything proceeds identically, until the last step where the probability value
 has to be subtracted from 1.</p>
 
-<p><strong>Solution:</strong> Mean(\(\mu\)) = 175000, SD(\(\sigma\)) = 7000<br />
+<p><strong>Solution:</strong> Mean(<script type="math/tex">\mu</script>) = 175000, SD(<script type="math/tex">\sigma</script>) = 7000<br />
 We plug in the values above to get the following z-score,<br />
-\(z = \frac{X - \mu }{\sigma} = \frac{165000-175000}{7000} = -1.42\)</p>
+<script type="math/tex">z = \frac{X - \mu }{\sigma} = \frac{165000-175000}{7000} = -1.42</script></p>
 <pre><code class="language-commandline">&gt; z = (165000-175000)/7000
 &gt; z
 [1] -1.428571
@@ -270,11 +270,11 @@ pictorial representation, we are essentially finding the area to the right of th
 <strong>Example 4:</strong>: The average price of 2-bedroom houses in a small town is \$175,000 with a standard deviation
 of about $7,000. What is the probability of finding houses listed between \$169,000 and \$179,000 (assuming 
 all other parameters like sqft being identical).
-<strong>Solution:</strong> Mean(\(\mu\)) = 175000, SD(\(\sigma\)) = 7000<br />
+<strong>Solution:</strong> Mean(<script type="math/tex">\mu</script>) = 175000, SD(<script type="math/tex">\sigma</script>) = 7000<br />
 This problem has 2 different z-scores for the 2 different X-values:
-\(X_1 = 16900, X_2 = 179000\).<br />
-\(X_1 = 169000:  z = \frac{X - \mu }{\sigma} = \frac{169000-175000}{7000} = -0.86\)
-\(X_2 = 179000:  z = \frac{X - \mu }{\sigma} = \frac{179000-175000}{7000} = 0.57\)</p>
+<script type="math/tex">X_1 = 16900, X_2 = 179000</script>.<br />
+<script type="math/tex">X_1 = 169000:  z = \frac{X - \mu }{\sigma} = \frac{169000-175000}{7000} = -0.86</script>
+<script type="math/tex">X_2 = 179000:  z = \frac{X - \mu }{\sigma} = \frac{179000-175000}{7000} = 0.57</script></p>
 <pre><code class="language-commandline">&gt; z1 = (169000-175000)/7000
 &gt; z1
 [1] -0.8571429
