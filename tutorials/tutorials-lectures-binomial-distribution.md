@@ -210,7 +210,7 @@ P(95 immune, 5 not immune) = $${}^{100}C_{95} \times (0.95)^{95} \times (0.05)^5
 ## R Lab
 
 Now, we will learn howto find the probabilities of a binomial distribution using the R package. 
-Specifically, we will lean three things
+Specifically, we will learn three things.
 1. How to calculate probability of a single event using R
 2. How to calculate the entire binomial distribution using R
 3. How to plot your binomial distribution  
