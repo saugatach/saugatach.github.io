@@ -46,7 +46,8 @@ which are subsets of the system, forms a **binomial distribution**. Consider tos
 coin. There are only two outcomes; heads or tails. {H,T}. Now, if we toss the coin 3 times, then
 we can get a series of head and tails. The number of heads and tails that we will get at any time
 would be totally random and determined by the probability of heads from that coin. Let's say we get
-{HTH}. This sequence is itself random. However, get calculate its probability.  
+{HTH}. This sequence is itself random (the set of all such sequences forms an algebra known as 
+the $$\sigma$$-algebra), but we can calculate its probability.  
 
 Let us assume the coin is fair and the probability of landing on heads and tails in equal. 
 Let  
